@@ -1,0 +1,19 @@
+{
+  "name": "seedleaguies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy-lambda": "zip -r seed-lambda.zip index.js node_modules && aws lambda create-function --function-name seed --runtime nodejs20.x --role arn:aws:iam::661566115886:role/LambdaExecutionRole --handler index.handler --zip-file fileb://./seed-lambda.zip",
+    "update-lambda": "zip -r seed-lambda.zip index.js node_modules && aws lambda update-function-code --function-name seed --zip-file fileb://./seed-lambda.zip"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.503.1",
+    "@aws-sdk/lib-dynamodb": "^3.503.1",
+    "@aws-sdk/util-dynamodb": "^3.503.1"
+  }
+}
